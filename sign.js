@@ -1,21 +1,22 @@
-const passwordinput = document.querySelector('#password')
-const nameinput = document.querySelector("#name")
-const emailinput = document.querySelector("#Email")
-const btn2 = document.querySelector("#btn2")
+const form = document.querySelector("#signupForm");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
+const message = document.querySelector("#message");
 
-btn2.addEventListener('click', function (e) {
+form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = (nameinput.value.trim());
-    const password = (passwordinput.value.trim());
-    const Email = (emailinput.value.trim())
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (name !== "" && password !== "" && Email !== "") {
+    if (name && email && password) {
         message.textContent = "Form Submitted Successfully ✅";
         message.style.color = "green";
-
+        form.reset();   // form clear ho jayega
     } else {
-        message.textContent = 'Something missing ❌'
-        message.style.color = 'red'
+        message.textContent = "Please fill all fields ❌";
+        message.style.color = "red";
     }
-})
+});
